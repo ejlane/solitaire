@@ -1,4 +1,15 @@
-enum contact
+enum single_contact
+{
+	DRAW_THREE,     // note to self - this must be aware of "drawn" deck.
+	                // if we assume there is only one "drawn" deck type per
+			// game, we can just find that one. but what if a game
+			// emerges with multiple instances of "drawn"? just
+			// choosing the next one in the list might be a
+			// solution
+	DEAL_HORIZONTAL // spider deal - deals a single card
+}
+
+enum double_contact
 {
 	INCOMPATIBLE,   // these two decks are incompatible
 	ALTERNATE_DOWN, // alternating colors, going down by one
@@ -8,11 +19,10 @@ enum contact
 
 enum deck_type
 {
-	CLASSIC_DRAW,   // the draw deck in classic solitaire
-	CLASSIC_FACEUP, // the three visible cards from classic draw deck
-	SIMPLE,         // face-down hidden deck that upturns its top card once visible above deck is exhausted
-	CLASSIC_TOP,    // all-visible above deck (classic card matching)
-	SPIDER_TOP      // all-visible above deck (spider card matching)
+	DRAW,   // the draw deck in klondike solitaire
+	DRAWN,  // the three visible cards from klondike draw deck
+	SIMPLE, // face-down hidden deck that upturns its top card once visible above deck is exhausted
+	TOP     // all-visible above deck
 }
 
 // card *next is so that I can make a linked list of cards (deck)
@@ -31,3 +41,11 @@ typedef struct deck_struct
 	card *first; // first card in deck
 	deck *next;  // next deck in list (if this is a linked list of decks)
 } deck;
+
+// the biggest part of a game's ruleset definition is a series of matchups that
+typedef struct matchup_struct
+{
+	int deck_one; // use deck_type struct
+	int deck_two; // use deck_type struct
+	int matchup_type; // use contact struct
+} matchup;
