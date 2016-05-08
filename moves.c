@@ -91,4 +91,22 @@ void add_deck_top(deck *target, deck *addition)
 // metadata held in it
 void add_deck_bottom(deck *target, deck *addition)
 {
+	if (target->first == NULL) {
+		target->first = addition->first;
+		free(addition);
+		return;
+	}
+
+	card *current = NULL;
+	for (current = target->first; current->next != NULL; current = current->next);
+	current->next = addition->first;
+	free(addition);
+	return;
+}
+
+// grabs x cards from the top of target, and returns a deck holding these cards.
+// the deck struct at the top of this deck will be initialized with null_deck
+deck *grab_x_top(deck *target, int x)
+{
+	
 }
