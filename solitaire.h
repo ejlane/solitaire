@@ -6,7 +6,7 @@ enum single_contact
 			// emerges with multiple instances of "drawn"? just
 			// choosing the next one in the list might be a
 			// solution
-	DEAL_HORIZONTAL // spider deal - deals a single card
+	DEAL_HORIZONTAL // spider deal - deals a single card to all decks
 }
 
 enum double_contact
@@ -43,9 +43,10 @@ typedef struct deck_struct
 } deck;
 
 // the biggest part of a game's ruleset definition is a series of matchups that
+// define what moves are legal
 typedef struct matchup_struct
 {
 	int deck_one; // use deck_type struct
 	int deck_two; // use deck_type struct
-	int matchup_type; // use contact struct
+	int matchup_type; // use double_contact struct
 } matchup;
