@@ -8,14 +8,14 @@ void reverse(deck *target)
 	if (target->first = NULL)
 		return target;
 
-	deck *dummy = null_deck;
+	deck dummy;
 	card *current = NULL;
 	for (current = target->first; current != NULL; current = current->next)
 	{
-		add_top(dummy, current);
+		add_top(&dummy, current);
 	}
 
-	target->first = dummy->first;
+	target->first = dummy.first;
 	return;
 }
 
@@ -105,8 +105,17 @@ void add_deck_bottom(deck *target, deck *addition)
 }
 
 // grabs x cards from the top of target, and returns a deck holding these cards.
-// the deck struct at the top of this deck will be initialized with null_deck
+// the deck struct at the top of this deck will not have any reliable information
+// other than its card pointer - user has to handle deck metadata himself
 deck *grab_x_top(deck *target, int x)
 {
-	
+	deck *ans = malloc(sizeof(deck));
+	memset(ans, 0, sizeof(deck));
+
+	if (
+
+	int i;
+	for (i=0; i<x; i++) {
+		
+	}
 }

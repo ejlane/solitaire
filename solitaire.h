@@ -42,10 +42,6 @@ typedef struct deck_struct
 	deck *next;  // next deck in list (if this is a linked list of decks)
 } deck;
 
-// dummy card/deck initializations
-const card *null_card = { .number = 0, .suit = NULL, .next = NULL };
-const deck *null_deck = { .type = 0, .first = NULL, .next = NULL };
-
 // the biggest part of a game's ruleset definition is a series of matchups that
 // define what moves are legal
 typedef struct matchup_struct
